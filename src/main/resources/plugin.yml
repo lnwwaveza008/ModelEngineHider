@@ -1,0 +1,10 @@
+name: ModelEngineHider
+version: ${project.version}
+main: lnwwaveza007.lnwwaveza007.Lnwwaveza007
+api-version: 1.16
+authors: [ Lnwwaveza007 ]
+description: Lnwwaveza007
+commands:
+  meghider:
+      description: Hide The Model From Meg
+      aliases: [meghider]
