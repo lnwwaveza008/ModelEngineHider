@@ -1,6 +1,7 @@
 package lnwwaveza007.lnwwaveza007;
 
 import lnwwaveza007.lnwwaveza007.Commands.maincommands;
+import lnwwaveza007.lnwwaveza007.Commands.tabcomplete;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,6 +14,7 @@ public final class Lnwwaveza007 extends JavaPlugin {
         System.out.println(ChatColor.LIGHT_PURPLE + "          By Lnwwaveza007               ");
         System.out.println(ChatColor.GREEN + "              Enable                    ");
         getCommand("meghider").setExecutor(new maincommands());
+        getCommand("meghider").setTabCompleter(new tabcomplete());
     }
 
     @Override

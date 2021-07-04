@@ -28,64 +28,76 @@ public class maincommands implements CommandExecutor {
             if (player.hasPermission("meghider.*")) {
                 if (args.length > 0) {
                     if (args[0].equalsIgnoreCase("Spawn")) {
-                        World w = player.getWorld();
-                        Float x = Float.parseFloat(args[2]);
-                        Float y = Float.parseFloat(args[3]);
-                        Float z = Float.parseFloat(args[4]);
-                        Float yaw = Float.parseFloat(args[5]);
-                        Float pitch = Float.parseFloat(args[6]);
-                        Entity entity = player.getLocation().getWorld().spawnEntity(new Location(w,x,y,z,yaw,pitch), EntityType.VILLAGER);
-                        LivingEntity lEntity = (LivingEntity) entity;
-                        lEntity.setAI(false);
-                        lEntity.setSilent(true);
-                        lEntity.addScoreboardTag(player.getName()+args[7]);
+                        if (args[1] != null && args[2] != null && args[3] != null && args[4] != null && args[5] != null && args[6] != null && args[7] != null && args[8] != null) {
+                            World w = player.getWorld();
+                            Float x = Float.parseFloat(args[2]);
+                            Float y = Float.parseFloat(args[3]);
+                            Float z = Float.parseFloat(args[4]);
+                            Float yaw = Float.parseFloat(args[5]);
+                            Float pitch = Float.parseFloat(args[6]);
+                            Entity entity = player.getLocation().getWorld().spawnEntity(new Location(w, x, y, z, yaw, pitch), EntityType.VILLAGER);
+                            LivingEntity lEntity = (LivingEntity) entity;
+                            lEntity.setAI(false);
+                            lEntity.setSilent(true);
+                            lEntity.addScoreboardTag(player.getName() + args[7]);
 
-                        ActiveModel activeModel = ModelEngineAPI.api.getModelManager().createActiveModel(args[1]);
-                        ModeledEntity modeledEntity = ModelEngineAPI.api.getModelManager().createModeledEntity(entity);
-                        modeledEntity.addActiveModel(activeModel);
+                            ActiveModel activeModel = ModelEngineAPI.api.getModelManager().createActiveModel(args[1]);
+                            ModeledEntity modeledEntity = ModelEngineAPI.api.getModelManager().createModeledEntity(entity);
+                            modeledEntity.addActiveModel(activeModel);
 
-                        modeledEntity.detectPlayers();
-                        modeledEntity.setInvisible(true);
+                            modeledEntity.detectPlayers();
+                            modeledEntity.setInvisible(true);
 
-                        activeModel.addState("idle", 2, 2, 1);
-                        StateProperty stateProperty = activeModel.getState("idle");
-                        for (Player plr : Bukkit.getOnlinePlayers()) {
-                            modeledEntity.removePlayer(plr);
+                            activeModel.addState("idle", 2, 2, 1);
+                            StateProperty stateProperty = activeModel.getState("idle");
+                            for (Player plr : Bukkit.getOnlinePlayers()) {
+                                modeledEntity.removePlayer(plr);
+                            }
+                            modeledEntity.addPlayer(player);
+                        }else{
+                            player.sendMessage(ChatColor.RED + "Enter all arguments frist please :^(");
                         }
-                        modeledEntity.addPlayer(player);
                     }
                     else if (args[0].equalsIgnoreCase("State")){
-                        for (Entity entity : player.getWorld().getEntities()) {
-                            if (entity.getScoreboardTags().contains(player.getName()+args[1])) {
-                                if (args[3].equalsIgnoreCase("Idle")) {
-                                    ActiveModel activeModel = ModelEngineAPI.api.getModelManager().getModeledEntity(entity.getUniqueId()).getActiveModel(args[2]);
-                                    activeModel.removeState("walk",true);
-                                    activeModel.addState(args[3], 2, 2, 1);
-                                    StateProperty stateProperty = activeModel.getState(args[3]);
-                                }
-                                else{
-                                    ActiveModel activeModel = ModelEngineAPI.api.getModelManager().getModeledEntity(entity.getUniqueId()).getActiveModel(args[2]);
-                                    activeModel.addState(args[3], 2, 2, 1);
-                                    StateProperty stateProperty = activeModel.getState(args[3]);
-                                }
+                        if (args[1] != null && args[2] != null && args[3] != null) {
+                            for (Entity entity : player.getWorld().getEntities()) {
+                                if (entity.getScoreboardTags().contains(player.getName() + args[1])) {
+                                    if (args[3].equalsIgnoreCase("Idle")) {
+                                        ActiveModel activeModel = ModelEngineAPI.api.getModelManager().getModeledEntity(entity.getUniqueId()).getActiveModel(args[2]);
+                                        activeModel.removeState("walk", true);
+                                        activeModel.addState(args[3], 2, 2, 1);
+                                        StateProperty stateProperty = activeModel.getState(args[3]);
+                                    } else {
+                                        ActiveModel activeModel = ModelEngineAPI.api.getModelManager().getModeledEntity(entity.getUniqueId()).getActiveModel(args[2]);
+                                        activeModel.addState(args[3], 2, 2, 1);
+                                        StateProperty stateProperty = activeModel.getState(args[3]);
+                                    }
 
+                                }
                             }
+                        }
+                        else{
+                            player.sendMessage(ChatColor.RED + "Enter all arguments frist please :^(");
                         }
                     }
                     else if (args[0].equalsIgnoreCase("Remove")){
-                        for (Entity entity : player.getWorld().getEntities()) {
-                            if (entity.getScoreboardTags().contains(player.getName()+args[1])) {
-                                entity.teleport(new Location(player.getWorld(),1,1,1));
-                                entity.remove();
+                        if (args[1] != null) {
+                            for (Entity entity : player.getWorld().getEntities()) {
+                                if (entity.getScoreboardTags().contains(player.getName() + args[1])) {
+                                    entity.teleport(new Location(player.getWorld(), 1, 1, 1));
+                                    entity.remove();
+                                }
                             }
+                        }
+                        else{
+                            player.sendMessage(ChatColor.RED + "Enter all arguments frist please :^(");
                         }
                     }
                 } else {
-                    player.sendMessage(ChatColor.RED + "Commands Info : ");
-                    player.sendMessage(ChatColor.RED + "/meghider Spawn [<MOB>] [<X>] [<Y>] [<Z>] [<YAW>] [<PITCH>] [<NAME(FOR SAVE)>]");
-                    player.sendMessage(ChatColor.RED + "/meghider Look [<NAME(FOR SAVE)>] [<YAW>] [<PITCH>]");
-                    player.sendMessage(ChatColor.RED + "/meghider Remove [<NAME(FOR SAVE)>]");
-                    player.sendMessage(ChatColor.RED + "/meghider State [<NAME(FOR SAVE)>] [<MOB>] [<STATE>]");
+                    player.sendMessage(ChatColor.AQUA + "Commands Info : ");
+                    player.sendMessage(ChatColor.RED + "/meghider Spawn [<MOB>] [<X>] [<Y>] [<Z>] [<Ya>] [<Pi>] [<SAVENAME>]");
+                    player.sendMessage(ChatColor.RED + "/meghider Remove [<SAVENAME>]");
+                    player.sendMessage(ChatColor.RED + "/meghider State [<SAVENAME>] [<MOB>] [<STATE>]");
                 }
             } else {
                 player.sendMessage(ChatColor.RED + "Nah Don't use this");
