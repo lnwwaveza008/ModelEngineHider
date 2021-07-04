@@ -10,7 +10,7 @@ public final class Lnwwaveza007 extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        System.out.println(ChatColor.LIGHT_PURPLE + "            ModelHider 0.8                 ");
+        System.out.println(ChatColor.LIGHT_PURPLE + "            ModelHider 0.9                 ");
         System.out.println(ChatColor.LIGHT_PURPLE + "          By Lnwwaveza007               ");
         System.out.println(ChatColor.GREEN + "              Enable                    ");
         getCommand("meghider").setExecutor(new maincommands());
@@ -19,7 +19,7 @@ public final class Lnwwaveza007 extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        System.out.println(ChatColor.LIGHT_PURPLE + "            ModelHider 0.8                 ");
+        System.out.println(ChatColor.LIGHT_PURPLE + "            ModelHider 0.9                 ");
         System.out.println(ChatColor.LIGHT_PURPLE + "          By Lnwwaveza007               ");
         System.out.println(ChatColor.RED + "              Disable                   ");
     }
