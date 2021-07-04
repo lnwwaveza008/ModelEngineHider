@@ -10,71 +10,82 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class tabcomplete implements TabCompleter{
-
-    @Nullable
+public class tabcomplete implements TabCompleter {
     @Override
+    @Nullable
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
         Player player = (Player) sender;
         if (player.isOp()) {
             if (command.getName().equalsIgnoreCase("meghider")) {
-                if (args.length == 1) {
+                if (args.length == 1 && args[0].isEmpty()) {
                     List<String> arguments = new ArrayList<>();
                     arguments.add("Spawn");
                     arguments.add("Remove");
                     arguments.add("State");
-                } else if (args.length == 2) {
-                    if (args[1].equalsIgnoreCase("Spawn")) {
+                    return arguments;
+                } else if (args.length == 2 && args[1].isEmpty()) {
+                    if (args[0].equalsIgnoreCase("Spawn")) {
                         List<String> arguments = new ArrayList<>();
                         arguments.add("ModelName");
-                    } else if (args[1].equalsIgnoreCase("Remove")) {
+                        return arguments;
+                    } else if (args[0].equalsIgnoreCase("Remove")) {
                         List<String> arguments = new ArrayList<>();
                         arguments.add("SaveName");
-                    } else if (args[1].equalsIgnoreCase("State")) {
+                        return arguments;
+                    } else if (args[0].equalsIgnoreCase("State")) {
                         List<String> arguments = new ArrayList<>();
                         arguments.add("SaveName");
+                        return arguments;
                     }
-                } else if (args.length == 3) {
-                    if (args[1].equalsIgnoreCase("Spawn")) {
+
+                } else if (args.length == 3 && args[2].isEmpty()) {
+                    if (args[0].equalsIgnoreCase("Spawn")) {
                         List<String> arguments = new ArrayList<>();
-                        arguments.add(String.valueOf(player.getLocation().getX()));
-                    } else if (args[1].equalsIgnoreCase("State")) {
+                        arguments.add(String.valueOf(Math.round(player.getLocation().getX())));
+                        return arguments;
+                    } else if (args[0].equalsIgnoreCase("State")) {
                         List<String> arguments = new ArrayList<>();
                         arguments.add("ModelName");
+                        return arguments;
                     }
-                }
-                } else if (args.length == 4) {
-                    if (args[1].equalsIgnoreCase("Spawn")) {
+                } else if (args.length == 4 && args[3].isEmpty()) {
+                    if (args[0].equalsIgnoreCase("Spawn")) {
                         List<String> arguments = new ArrayList<>();
-                        arguments.add(String.valueOf(player.getLocation().getY()));
-                    } else if (args[1].equalsIgnoreCase("State")) {
+                        arguments.add(String.valueOf(Math.round(player.getLocation().getY())));
+                        return arguments;
+                    } else if (args[0].equalsIgnoreCase("State")) {
                         List<String> arguments = new ArrayList<>();
                         arguments.add("State");
+                        return arguments;
                     }
-                }
-                } else if (args.length == 5) {
-                    if (args[1].equalsIgnoreCase("Spawn")) {
+                } else if (args.length == 5 && args[4].isEmpty()) {
+                    if (args[0].equalsIgnoreCase("Spawn")) {
                         List<String> arguments = new ArrayList<>();
-                        arguments.add(String.valueOf(player.getLocation().getZ()));
-                }
-                } else if (args.length == 6) {
-                    if (args[1].equalsIgnoreCase("Spawn")) {
-                        List<String> arguments = new ArrayList<>();
-                        arguments.add(String.valueOf(player.getLocation().getYaw()));
+                        arguments.add(String.valueOf(Math.round(player.getLocation().getZ())));
+                        return arguments;
                     }
-                }
-                else if (args.length == 7) {
-                    if (args[1].equalsIgnoreCase("Spawn")) {
+                } else if (args.length == 6 && args[5].isEmpty()) {
+                    if (args[0].equalsIgnoreCase("Spawn")) {
                         List<String> arguments = new ArrayList<>();
-                        arguments.add(String.valueOf(player.getLocation().getPitch()));
+                        arguments.add(String.valueOf(Math.round(player.getLocation().getYaw())));
+                        return arguments;
                     }
-                }
-                else if (args.length == 8) {
-                    if (args[1].equalsIgnoreCase("Spawn")) {
+                } else if (args.length == 7 && args[6].isEmpty()) {
+                    if (args[0].equalsIgnoreCase("Spawn")) {
+                        List<String> arguments = new ArrayList<>();
+                        arguments.add(String.valueOf(Math.round(player.getLocation().getPitch())));
+                        return arguments;
+                    }
+                } else if (args.length == 8 && args[7].isEmpty()) {
+                    if (args[0].equalsIgnoreCase("Spawn")) {
                         List<String> arguments = new ArrayList<>();
                         arguments.add("SaveName");
+                        return arguments;
                     }
                 }
+
+            }
+        }
         return null;
     }
 }
