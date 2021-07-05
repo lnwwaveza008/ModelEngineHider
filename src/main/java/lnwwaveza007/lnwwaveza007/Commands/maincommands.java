@@ -58,11 +58,9 @@ public class maincommands implements CommandExecutor {
                                     ActiveModel activeModel = ModelEngineAPI.api.getModelManager().getModeledEntity(entity.getUniqueId()).getActiveModel(args[2]);
                                     activeModel.removeState("walk", true);
                                     activeModel.addState(args[3], 2, 2, 1);
-                                    activeModel.getState(args[3]);
                                 } else {
                                     ActiveModel activeModel = ModelEngineAPI.api.getModelManager().getModeledEntity(entity.getUniqueId()).getActiveModel(args[2]);
                                     activeModel.addState(args[3], 2, 2, 1);
-                                    activeModel.getState(args[3]);
                                 }
 
                             }
