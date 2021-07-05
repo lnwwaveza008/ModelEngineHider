@@ -1,7 +1,6 @@
 package lnwwaveza007.lnwwaveza007.Commands;
 
 import com.ticxo.modelengine.api.ModelEngineAPI;
-import com.ticxo.modelengine.api.manager.StateProperty;
 import com.ticxo.modelengine.api.model.ActiveModel;
 import com.ticxo.modelengine.api.model.ModeledEntity;
 import org.bukkit.Bukkit;
@@ -48,7 +47,6 @@ public class maincommands implements CommandExecutor {
                         modeledEntity.setInvisible(true);
 
                         activeModel.addState("idle", 2, 2, 1);
-                        StateProperty stateProperty = activeModel.getState("idle");
                         for (Player plr : Bukkit.getOnlinePlayers()) {
                             modeledEntity.removePlayer(plr);
                         }
@@ -60,11 +58,11 @@ public class maincommands implements CommandExecutor {
                                     ActiveModel activeModel = ModelEngineAPI.api.getModelManager().getModeledEntity(entity.getUniqueId()).getActiveModel(args[2]);
                                     activeModel.removeState("walk", true);
                                     activeModel.addState(args[3], 2, 2, 1);
-                                    StateProperty stateProperty = activeModel.getState(args[3]);
+                                    activeModel.getState(args[3]);
                                 } else {
                                     ActiveModel activeModel = ModelEngineAPI.api.getModelManager().getModeledEntity(entity.getUniqueId()).getActiveModel(args[2]);
                                     activeModel.addState(args[3], 2, 2, 1);
-                                    StateProperty stateProperty = activeModel.getState(args[3]);
+                                    activeModel.getState(args[3]);
                                 }
 
                             }

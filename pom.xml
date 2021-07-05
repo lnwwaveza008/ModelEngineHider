@@ -62,6 +62,11 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>nexus</id>
+            <name>Lumine Releases</name>
+            <url>https://mvn.lumine.io/repository/maven-releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -75,15 +80,8 @@
             <groupId>lnwwaveza007.lnwwaveza007.Meg</groupId>
             <artifactId>ModelEngine</artifactId>
             <scope>system</scope>
-            <version>b2.0.2</version>
-            <systemPath>C:/Users/warvz/Downloads/Model-Engine-b2.0.2.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>lnwwaveza007.lnwwaveza007.MM</groupId>
-            <artifactId>Mythicmobs</artifactId>
-            <scope>system</scope>
-            <version>4.11.0</version>
-            <systemPath>C:/Users/warvz/Downloads/MythicMobs-4.11.0.jar</systemPath>
+            <version>r2.1.6</version>
+            <systemPath>C:/Users/warvz/Downloads/Model-Engine-r2.1.6.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
