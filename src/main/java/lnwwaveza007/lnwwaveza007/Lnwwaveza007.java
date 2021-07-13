@@ -10,17 +10,17 @@ public final class Lnwwaveza007 extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        System.out.println(ChatColor.LIGHT_PURPLE + "            ModelHider 0.9                 ");
-        System.out.println(ChatColor.LIGHT_PURPLE + "          By Lnwwaveza007               ");
-        System.out.println(ChatColor.GREEN + "              Enable                    ");
+        getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "            ModelHider 1.0                 ");
+        getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "          By Lnwwaveza007               ");
+        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "              Enabled                    ");
         getCommand("meghider").setExecutor(new maincommands());
         getCommand("meghider").setTabCompleter(new tabcomplete());
     }
 
     @Override
     public void onDisable() {
-        System.out.println(ChatColor.LIGHT_PURPLE + "            ModelHider 0.9                 ");
-        System.out.println(ChatColor.LIGHT_PURPLE + "          By Lnwwaveza007               ");
-        System.out.println(ChatColor.RED + "              Disable                   ");
+        getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "            ModelHider 1.0                 ");
+        getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "          By Lnwwaveza007               ");
+        getServer().getConsoleSender().sendMessage(ChatColor.RED + "              Disabled                    ");
     }
 }

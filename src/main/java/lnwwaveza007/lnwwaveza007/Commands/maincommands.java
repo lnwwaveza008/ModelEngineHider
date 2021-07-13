@@ -33,7 +33,7 @@ public class maincommands implements CommandExecutor {
                         Float z = Float.parseFloat(args[4]);
                         Float yaw = Float.parseFloat(args[5]);
                         Float pitch = Float.parseFloat(args[6]);
-                        Entity entity = player.getLocation().getWorld().spawnEntity(new Location(w, x, y, z, yaw, pitch), EntityType.VILLAGER);
+                        Entity entity = player.getLocation().getWorld().spawnEntity(new Location(w, 0, 0, 0, yaw, pitch), EntityType.VILLAGER);
                         LivingEntity lEntity = (LivingEntity) entity;
                         lEntity.setAI(false);
                         lEntity.setSilent(true);
@@ -47,6 +47,7 @@ public class maincommands implements CommandExecutor {
                         modeledEntity.setInvisible(true);
 
                         activeModel.addState("idle", 2, 2, 1);
+                        entity.teleport(new Location(w, x, y, z, yaw ,pitch));
                         for (Player plr : Bukkit.getOnlinePlayers()) {
                             modeledEntity.removePlayer(plr);
                         }
