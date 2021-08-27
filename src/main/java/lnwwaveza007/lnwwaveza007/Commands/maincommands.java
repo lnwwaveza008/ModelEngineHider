@@ -35,8 +35,6 @@ public class maincommands implements CommandExecutor {
                         Float pitch = Float.parseFloat(args[6]);
                         Entity entity = player.getLocation().getWorld().spawnEntity(new Location(w, 0, 0, 0, yaw, pitch), EntityType.VILLAGER);
                         LivingEntity lEntity = (LivingEntity) entity;
-                        lEntity.setAI(false);
-                        lEntity.setSilent(true);
                         lEntity.addScoreboardTag(player.getName() + args[7]);
 
                         ActiveModel activeModel = ModelEngineAPI.api.getModelManager().createActiveModel(args[1]);
@@ -51,6 +49,10 @@ public class maincommands implements CommandExecutor {
                         for (Player plr : Bukkit.getOnlinePlayers()) {
                             modeledEntity.removePlayer(plr);
                         }
+                        lEntity.setAI(false);
+                        lEntity.setInvulnerable(true);
+                        lEntity.setSilent(true);
+                        lEntity.setGravity(false);
                         modeledEntity.addPlayer(player);
                     } else if (args[0].equalsIgnoreCase("State")) {
                         for (Entity entity : player.getWorld().getEntities()) {
